@@ -22,17 +22,14 @@ body {
 
 .ad-left {
     width: 150px;
-    background-color: blue;
 }
 
 .ad-top {
     height: 150px;
-    background-color: red;
 }
 
 .ad-bottom {
     height: 150px;
-    background-color: green;
 }
 
 .right-side {
