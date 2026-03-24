@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.screens {
+    display: flex;
+    height: 100vh;
+    background-color: black;
+}
+
+.middle-row {
+    display: flex;
+    flex: 1;
+}
+
+.ad-left {
+    width: 150px;
+    background-color: blue;
+}
+
+.ad-top {
+    height: 150px;
+    background-color: red;
+}
+
+.ad-bottom {
+    height: 150px;
+    background-color: green;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.game-box {
+    flex: 1;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
