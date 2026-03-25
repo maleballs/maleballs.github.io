@@ -1,4 +1,4 @@
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     //canvas setup
     const canvas = document.getElementById('kevin_rpg_2');
 
@@ -6,9 +6,12 @@ window.addEventListener('load', function() {
     const ctx = canvas.getContext('2d');
 
     //This is retarded but seems to work
-    canvas.width = 10000;
-    canvas.height = 3000;
-    
+    canvas.width = 1200;
+    canvas.height = 400;
+
+    //NPC sprites
+    const currnpc = new Image();
+    currnpc.src = 'assets/woowooweewee.png';
 
     //Class declaration, add these as you go (oop principles)
     class InputHandler {
@@ -29,18 +32,19 @@ window.addEventListener('load', function() {
     class NPC {
         constructor(game) {
             this.game = game;
-            this.width = 250;
-            this.height = 300;
-            //Update these later, for now just draw on screen. screen size (1000, 300)
-            this.x = 750;
-            this.y = 150;
+            this.width = 200;
+            this.height = 500;
+            //Update these later, for now just draw on screen. screen size (1200, 400)
+            this.x = 1000;
+            this.y = 0;
         }
         update(sprite) {
             //Replace the sprite
             this.sprite = sprite;
         }
         draw(context) {
-            
+            if (!this.sprite) return;
+            context.drawImage(this.sprite, this.x, this.y, this.width, this.height);
         }
     }
     class UI {
@@ -48,5 +52,33 @@ window.addEventListener('load', function() {
     }
     class Game {
         //All other classes will be encapsulated within this one
+        constructor(width, height) {
+            this.width = width;
+            this.height = height;
+            //calling our other class constructors from game
+            this.npc = new NPC(this);
+        }
+        /*Can call all dependent update/draw methods here. 
+        TODO: You MIGHT have to change this since this game
+        Doesnt have animation and wont need a redraw on each pass.
+        */
+        update() {
+            this.npc.update(currnpc);
+        }
+        draw(context) {
+            this.npc.draw(context);
+        }
     }
+
+    const game = new Game(canvas.width, canvas.height);
+
+    //Game loop. maybe we only call this when a click listener is triggered?
+    function gameloop() {
+        //Again these MAY IN FACT NOT BE NECESSARY!
+        game.update();
+        game.draw(ctx);
+        //might want to swap this out and execute gameloop during click listeners.
+        requestAnimationFrame(gameloop);
+    }
+    gameloop();
 });
