@@ -1,3 +1,7 @@
+//if you want to attempt some ts for proj do \@ts-check without backslash, could also be beneficial for post game rewrite.
+
+import { storyevent } from "./storyevent.js";
+
 window.addEventListener('load', function () {
 
     // --- Canvas Setup ---
@@ -18,7 +22,8 @@ window.addEventListener('load', function () {
     // Tracks the active cleanup function for the current screen
     let cleanup;
 
-    // --- Classes ---
+    // --- Classes and Enums ---
+    //TODO: Create enum for indexes in story array
     class UI {
         constructor(game) {
             this.game = game;
@@ -56,6 +61,7 @@ window.addEventListener('load', function () {
             this.x = 1350;
             this.y = 200;
             this.sprite = null;
+            this.story = [new storyevent("init")];
         }
         update(sprite) {
             this.sprite = sprite;
@@ -73,6 +79,7 @@ window.addEventListener('load', function () {
             this.background = new Background(this);
             this.ui = new UI(this);
             this.npc = new NPC(this);
+            
         }
         update() {
             this.background.update(backgroundImage);

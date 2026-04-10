@@ -73,14 +73,16 @@ body {
 }
 
 #start-button {
-    position: absolute;
-    left: 450px;
-    top: 500px;
-    /*Make other button properties*/
-    height: 150px;
-    width: 700px;
-    font-family: cursive;
-    font-size: xx-large;
+  position: absolute;
+  left: 50%;
+  top: 75%;
+  transform: translate(-50%, -50%);
+
+  height: 25%;
+  width: 45%;
+
+  font-family: cursive;
+  font-size: clamp(1rem, 2.5vw, 2rem);
 }
 
 #dialogue-box {
